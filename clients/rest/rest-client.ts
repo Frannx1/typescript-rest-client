@@ -4,7 +4,6 @@ import {RestClientRequestBuilder} from "./builders/rest-client-request-builder";
 import {RestResponse} from "../../types/response-types";
 import {Method} from "../../types/request-constants";
 
-
 export class RestClient {
   private readonly baseUrl: string;
   private readonly httpClient: HttpClient;
