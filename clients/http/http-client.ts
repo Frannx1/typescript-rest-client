@@ -1,6 +1,6 @@
-import {RequestConfig} from "./types/request.config.types";
-import {RestResponse} from "./types/response.types";
-import {Method} from "./types/request.constants";
+import {RequestConfig} from "../../types/request-config-types";
+import {RestResponse} from "../../types/response-types";
+import {Method} from "../../types/request-constants";
 
 export interface HttpClient {
   get<R, D>(url: string, config?: RequestConfig<D>): Promise<RestResponse<R>>;

@@ -1,14 +1,14 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, {AxiosInstance} from 'axios';
 import {HttpClient} from "./http-client";
-import {RequestConfig} from "./types/request.config.types";
-import {RestResponse} from "./types/response.types";
-import {Method} from "./types/request.constants";
+import {RequestConfig} from "../../types/request-config-types";
+import {RestResponse} from "../../types/response-types";
+import {Method} from "../../types/request-constants";
 
 export class AxiosHttpClient implements HttpClient {
   protected readonly axiosInstance: AxiosInstance;
 
-  constructor(baseUrl?: string, config?: RequestConfig) {
-    this.axiosInstance = axios.create({...config, baseURL: baseUrl});
+  constructor(config?: RequestConfig) {
+    this.axiosInstance = axios.create({...config});
   }
 
   get<R, D>(url: string, config?: RequestConfig<D>): Promise<RestResponse<R>> {

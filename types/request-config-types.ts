@@ -1,15 +1,6 @@
-import {ResponseEncoding} from "./request.constants";
-import {ResponseHeaders} from "./response.types";
-import {ResponseType} from "./response.constants";
-import {Method} from "axios";
-
-export interface HttpConnectionOption {
-  keepAlive?: boolean | undefined;
-  freeSocketTimeout?: number | undefined;
-  freeSocketKeepAliveTimeout?: number | undefined;
-  timeout?: number | undefined;
-  socketActiveTTL?: number | undefined;
-}
+import {ResponseEncoding} from "./request-constants";
+import {ResponseHeaders} from "./response-types";
+import {ResponseType} from "./response-constants";
 
 export type RequestHeaders = Record<string, string | number | boolean>;
 
@@ -40,15 +31,9 @@ export interface RequestConnectionConfig {
   proxy?: ProxyConfig | false;
 }
 
-export interface BasicRequestConfig {
-  path?: string;
-  method?: Method;
-  baseURL?: string;
-}
-
-export interface AdvanceRequestConfig<D = any> {
-  transformRequest?: RequestTransformer | RequestTransformer[];
-  transformResponse?: ResponseTransformer | ResponseTransformer[];
+export interface RequestAdvanceConfig<D = any> {
+  transformRequest?: RequestTransformer[];
+  transformResponse?: ResponseTransformer[];
   headers?: RequestHeaders;
   params?: any;
   paramsSerializer?: (params: any) => string;
@@ -72,4 +57,4 @@ export interface AdvanceRequestConfig<D = any> {
   insecureHTTPParser?: boolean;
 }
 
-export interface RequestConfig<D = any> extends AdvanceRequestConfig<D>, RequestConnectionConfig { }
+export interface RequestConfig<D = any> extends RequestAdvanceConfig<D>, RequestConnectionConfig { }
