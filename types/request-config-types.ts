@@ -1,4 +1,4 @@
-import {ResponseEncoding} from "./request-constants";
+import {Method, ResponseEncoding} from "./request-constants";
 import {ResponseHeaders} from "./response-types";
 import {ResponseType} from "./response-constants";
 
@@ -58,3 +58,9 @@ export interface RequestAdvanceConfig<D = any> {
 }
 
 export interface RequestConfig<D = any> extends RequestAdvanceConfig<D>, RequestConnectionConfig { }
+
+export interface RequestFullConfig<D = any> extends RequestConfig<D> {
+  path: string;
+  method: Method;
+  baseUrl: string;
+}
